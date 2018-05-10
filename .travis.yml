@@ -1,0 +1,9 @@
+language: node_js
+node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: yjy9sPyItHjc5RAB0XJz9c/Fqq/06COWmeyQiZQu2gQhAE9sbw0YBWbbgsXjZUVpftJ/EqnaPGMvCtkoRMOTmDGEcPNhIC+bwMSjZfiLyab+CJ/RNXpWF94tG/XcTjUuITa1NuAZ6cd0ejj2lyDcvb+yD8hj9fwL+nfbrMfDUNCxlemYoF9Nu41uyRuUJLvwu+b2oSSohuvwZBUc66tm1o3Bmv6lQwzs6bJoL+UiEFG4MqmkQAMuodHXF1TUn0N9n6HAzRNjovfexp2xX6+02dlB3vpp/l4TtukKqU+o5ulGkhn/nPs0eVOP0K7f8y8L6pRswGZQ0rbR7gXgKTp1JBkKlPBERfT9KI+oWBBuVWeWkby0zJmpjrL57nP7A8IH4biSeR2DwZjO16O9eOSe5+35h8Z6iNE+FeVSiJUOzaz2DJI4iODXxaUD/R4Bes0YzKf3qG3G6W4khxUQR7UF/ghfK7yckod6JDrvDNTtAE7zAlbX/IBrUa3bDwOyad3WAiwltN/soOLqRheStN60ScqxFIR4kYlHhVUqWeTu9vo/5PSRO+c5pdyaCQYE7JrwtEs4NkHVNHCAMk2zs4qnWDtqrER9EdzQFLC1F419MAEoUimWyVrcqh2BEq+h8t0OifKYqOvQ0AXDtxR3k9trv3Tn6y4hPf9UXBxx5iNZ2bE=
+  app: aqueous-caverns-20071
+  on:
+    repo: RobertVFrazier/blog-api-integration-tests
