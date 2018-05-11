@@ -4,7 +4,8 @@
   "description": "Blog challenge exercise",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha ./test"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -21,5 +22,15 @@
     "hyperdev",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RobertVFrazier/Blog_API/issues"
+  },
+  "homepage": "https://github.com/RobertVFrazier/Blog_API#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.5.3"
+  },
+  "author": ""
 }

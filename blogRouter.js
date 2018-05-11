@@ -7,22 +7,24 @@ const jsonParser = bodyParser.json();
 
 const {BlogPosts} = require('./models.js');
 
-// we're going to add some posts to Posts
-// so there's some data to look at
+// We're going to add some posts to Posts
+// so there's some data to look at.
 BlogPosts.create(
   'Pointless Blog Post', 'Not much to see here. If only I could think of a hot topic to blog about!', 'Joe Enui');
 BlogPosts.create(
   'This Blog is Crap!', 'I cannot believe I wasted seconds of my life reading that other post.', 'Mary Critique');
 
-// send back JSON representation of all posts
-// on GET requests to root
+
+// When a GET request comes in to the root of this router,
+// send back JSON representation of all posts from BlogPosts.
 router.get('/', (req, res) => {
   res.json(BlogPosts.get());
 });
 
 
-// When a new post is added, ensure it has the required fields. if not,
-// log an error and return a 400 status code with a helpful message.
+// When a POST request comes in to the root of this router,
+// ensure it has the required fields. If not, log an error 
+// and return a 400 status code with a helpful message.
 // If it's okay, add the new item, and return it with a status 201.
 router.post('/', jsonParser, (req, res) => {
   // Ensure 'title', 'content', and 'author' are in the request body.
@@ -39,24 +41,25 @@ router.post('/', jsonParser, (req, res) => {
   res.status(201).json(item);
 });
 
-// Delete posts (by id)!
+// When a DELETE request comes in with an id in the path,
+// try to delete that item from BlogPosts.
 router.delete('/:id', (req, res) => {
     BlogPosts.delete(req.params.id);
-  console.log(`Deleted shopping list item '${req.params.ID}'`);
+  console.log(`Deleted shopping list item '${req.params.ID}'.`);
   res.status(204).end();
 });
 
-// When a PUT request comes in with an updated post, ensure it has
-// the required fields. Also ensure that the post id is in url path, and
-// the post id in the updated item object matches. If there are problems with any
-// of that, log the error and send back a status code 400. Otherwise,
-// call `Posts.updateItem` with the updated post.
+// When a PUT request comes in with an updated post and an id in the path,
+// ensure it has the required fields. Also ensure that the post id is in
+// url path, and the post id in the updated item object matches. If there
+// are problems with any of that, log the error and send back a status code
+// 400. Otherwise, call `Posts.updateItem` with the updated post.
 router.put('/:id', jsonParser, (req, res) => {
   const requiredFields = ['title', 'content', 'author'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
-      const message = `Missing '${field}' in request body`
+      const message = `Missing '${field}' in request body.`
       console.error(message);
       return res.status(400).send(message);
     }
@@ -64,11 +67,11 @@ router.put('/:id', jsonParser, (req, res) => {
   if (req.params.id !== req.body.id) {
     const message = (
       `Request path id (${req.params.id}) and request body id `
-      `(${req.body.id}) must match`);
+      `(${req.body.id}) must match.`);
     console.error(message);
     return res.status(400).send(message);
   }
-  console.log(`Updating blog post item '${req.params.id}'`);
+  console.log(`Updating blog post '${req.params.id}'.`);
   const updatedItem = BlogPosts.update({
     id: req.params.id,
     title: req.body.title,

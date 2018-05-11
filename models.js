@@ -17,6 +17,7 @@ function StorageException(message) {
 
 const BlogPosts = {
   create: function(title, content, author, publishDate) {
+    console.log('Creating a new blog post.');
     const post = {
       id: uuid.v4(),
       title: title,
@@ -28,6 +29,7 @@ const BlogPosts = {
     return post;
   },
   get: function(id=null) {
+    console.log('Retrieving blog posts.');
     // if id passed in, retrieve single post,
     // otherwise send all posts.
     if (id !== null) {
@@ -40,6 +42,7 @@ const BlogPosts = {
     });
   },
   delete: function(id) {
+    console.log('Deleting a blog post.');
     const postIndex = this.posts.findIndex(
       post => post.id === id);
     if (postIndex > -1) {
@@ -47,12 +50,13 @@ const BlogPosts = {
     }
   },
   update: function(updatedPost) {
+    console.log('Updating a blog post.');
     const {id} = updatedPost;
     const postIndex = this.posts.findIndex(
       post => post.id === updatedPost.id);
     if (postIndex === -1) {
       throw new StorageException(
-        `Can't update item \`${id}\` because doesn't exist.`)
+        `Can't update item \`${id}\` because it doesn't exist.`)
     }
     this.posts[postIndex] = Object.assign(
       this.posts[postIndex], updatedPost);
